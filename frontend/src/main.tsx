@@ -15,6 +15,7 @@ import UpdateProfile from './pages/UpdateProfile.tsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
+    
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
         <Route path='/createAccount' element={<RegisterPage />} />
