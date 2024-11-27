@@ -18,7 +18,6 @@ const UpdateProfile: React.FC = () => {
 
   const { userInfo } = useSelector((state: any) => state.auth);
 
-  
   useEffect(() => {
     if (userInfo) {
       setName(userInfo.name);

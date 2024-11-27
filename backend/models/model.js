@@ -15,15 +15,6 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    //------------------------
-
-    // This will go to the content modedel ro refence data of user who is logged in
-    userId:{
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "User"
-  },
-  //--------------------------
 
     role: {
       type: String,
