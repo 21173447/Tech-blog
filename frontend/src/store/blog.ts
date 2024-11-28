@@ -83,4 +83,28 @@ export const userBlog = create<BlogStore>((set) => ({
 
     return { success: true, message: data.message || "Blog deleted successfully." };
   },
+
+  updateBlog: async (bid: string, updatedBlog: Blog) => {
+    const res = await fetch(`/api/blogs/${bid}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedBlog),
+    });
+  
+    const data = await res.json();
+  
+    if (!data.success) {
+      return { success: false, message: data.message };
+    }
+  
+    set((state) => ({
+      blogs: state.blogs.map((blog) => (blog._id === bid ? { ...blog, ...updatedBlog } : blog)),
+    }));
+  
+    return { success: true, message: "Blog updated successfully!" };
+  },
+  
+  
 }));
