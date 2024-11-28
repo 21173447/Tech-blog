@@ -7,6 +7,11 @@ import { useLogoutMutation } from "../slice/usersApiSlice";
 import { logout } from "../slice/authslice";
 import { useNavigate } from "react-router-dom";
 import img2 from "../images/LOGO2.png";
+import { FaPenToSquare } from "react-icons/fa6";
+import { CgProfile } from "react-icons/cg";
+import { RiTextBlock } from "react-icons/ri";
+import { TbLogout2 } from "react-icons/tb";
+
 const Nav: React.FC = () => {
   const [dark, setDark] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -68,7 +73,7 @@ const Nav: React.FC = () => {
           </Link>
         </div>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center pt-3 gap-6">
           {userInfo ? (
             <div className="relative" ref={dropdownRef}>
               <button
@@ -79,39 +84,39 @@ const Nav: React.FC = () => {
               </button>
 
               {dropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-md border border-gray-300 dark:border-gray-700">
+                <div className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg   border  dark:border-gray-700">
                   <div className="p-2">
                     <Link
                       to="/create"
-                      className="block text-WHITE dark:text-white hover:text-blue-500 transition py-1 px-3 rounded-md"
+                      className=" flex  items-center text-WHITE dark:text-white hover:text-gray-500 transition py-1 px-3 rounded-md"
                       onClick={closeDropdown}
                     >
-                      CREATE BLOG
+                      Write <FaPenToSquare className="ml-5" />
                     </Link>
                     <Link
                       to="/profile"
-                      className="block text-gray-900 dark:text-white hover:text-blue-500 transition py-1 px-3 rounded-md"
+                      className="flex  items-center text-gray-900 dark:text-white hover:text-gray-500  transition py-1 px-3 rounded-md"
                       onClick={closeDropdown}
                     >
-                      PROFILE
+                      Profile <CgProfile className="ml-3" />
                     </Link>
 
                     <Link
                       to="/Manageblogs"
-                      className="block text-gray-900 dark:text-white hover:text-blue-500 transition py-1 px-3 rounded-md"
+                      className="flex  items-center text-gray-900 dark:text-white hover:text-gray-500 transition py-1 px-3 rounded-md"
                       onClick={closeDropdown}
                     >
-                      BLOGS
+                      Blogs <RiTextBlock className="ml-5" />
                     </Link>
                     <Link
                       to="/logout"
-                      className="block text-gray-900 dark:text-white hover:text-blue-500 transition py-1 px-3 rounded-md"
+                      className="flex  items-center text-gray-900 dark:text-white hover:text-gray-500  transition py-1 px-3 rounded-md"
                       onClick={() => {
                         closeDropdown();
                         logoutHandler();
                       }}
                     >
-                      LOGOUT
+                      Logout <TbLogout2 className="ml-2" />
                     </Link>
                   </div>
                 </div>
