@@ -75,7 +75,7 @@ const RegisterPage: React.FC = () => {
 
       <div className="w-1/2 flex flex-col items-center justify-center p-8">
         <h1 className="text-2xl text-center mb-6 font-extralight text-gray-900">
-         ByteCraft
+        SIGN-UP
         </h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
