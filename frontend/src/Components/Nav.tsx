@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../slice/usersApiSlice";
 import { logout } from "../slice/authslice";
 import { useNavigate } from "react-router-dom";
-import img2 from  '../images/LOGO2.png'
+import img2 from "../images/LOGO2.png";
 const Nav: React.FC = () => {
   const [dark, setDark] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -60,11 +60,11 @@ const Nav: React.FC = () => {
   };
 
   return (
-    <nav className="bg-gray-900 dark:bg-blue-900 p-4 shadow-sm">
+    <nav className="bg-gray-900 dark:bg-blue-900 p-4 shadow-sm ">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="text-2xl text-white dark:text-white">
           <Link to="/">
-            <img className="w-20 text-white" src={img2} alt="" />
+            <img className="w-16 text-white" src={img2} alt="" />
           </Link>
         </div>
 
