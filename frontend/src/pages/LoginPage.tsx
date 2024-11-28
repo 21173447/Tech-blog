@@ -60,7 +60,7 @@ const LoginPage: React.FC = () => {
 
       <div className="w-1/2 flex flex-col items-center justify-center p-8">
         <div className="">
-          <h1 className="text-2xl  text-center mb-6 font-extralight text-gray-900">ByteCraft</h1>
+          <h1 className="text-2xl  text-center mb-6 font-extralight text-gray-900">SIGN-IN</h1>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label htmlFor="email" className="block mb-2 font-medium">
