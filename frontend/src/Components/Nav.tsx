@@ -65,7 +65,7 @@ const Nav: React.FC = () => {
   };
 
   return (
-    <nav className="bg-gray-900 dark:bg-blue-900 p-4 shadow-sm ">
+    <nav className="fixed top-0 left-0 w-full bg-gray-900 dark:bg-blue-900 p-4 shadow-sm z-30"> {/* Fixed position and high z-index */}
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="text-2xl text-white dark:text-white">
           <Link to="/">
