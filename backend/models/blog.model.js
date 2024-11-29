@@ -18,14 +18,6 @@ const blogSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-
-    userId:{
-      type: mongoose.Schema.Types.ObjectId,
-      required:true,
-      ref:"User"
-    },
-
-  
     content: {
       type: String,
       required: true,

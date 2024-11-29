@@ -14,9 +14,9 @@ export const getBlogs =  async(req,res) =>{
 
  export const createBlog =  async (req,res) => {
     const blog =req.body
-    const userid = req.user._Id
+    // const userid = req.user._Id
   
-    if( !blog.userId || !blog.image  ||! blog.name || !blog.title || !blog.content){
+    if(!blog.image  ||! blog.name || !blog.title || !blog.content){
       return res.status(400).json({success: false , message: "please provide all fields "})
     }
     // create a new product from a user it got a title,...

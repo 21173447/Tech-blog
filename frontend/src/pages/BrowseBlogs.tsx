@@ -1,52 +1,73 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";  // Import useNavigate for navigation
-import { userBlog } from "../store/blog"; 
+import { useNavigate } from "react-router-dom";
+import { userBlog } from "../store/blog";
 import Hero from "../Components/Hero";
 
 const BrowseBlogs = () => {
-  const { blogs, fetchBlogs } = userBlog(); 
-  const navigate = useNavigate();  // Hook for navigation
+  const { blogs, fetchBlogs } = userBlog();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetchBlogs(); 
+    fetchBlogs();
   }, [fetchBlogs]);
 
-  // Navigate to the blog detail page
   const handleClick = (bid: string) => {
-    navigate(`/blog/${bid}`);  // Redirect to the blog detail page
+    navigate(`/blog/${bid}`);
   };
 
   return (
-    <div>
+    <div className="">
       <Hero />
-
-      <h1 className="text-3xl font-bold mt-9">Recent Blog</h1>
-      <div className="grid grid-cols-1 place-items-center sm:grid-cols-2 gap-32 px-8">
+      <h1 className="text-center text-3xl font-thin text-black flex justify-center mr-[550px] pt-10">
+        Recent Blog
+      </h1>
+      <div className="flex justify-center pt-5">
+        <hr className="border-[3px] w-[45%] border-black" />
+      </div>
+  
+      <div className="grid grid-cols-3 pt-10 w-[50%] place-content-center justify-items-center mx-auto  space-y-4">
         {blogs && blogs.length > 0 ? (
           blogs.map((blog) => (
             <div
               key={blog._id}
-              className="flex bg-white shadow-md mt-8 rounded-lg overflow-hidden cursor-pointer"
-              onClick={() => handleClick(blog._id)}  // Handle click to view the blog
+              className="bg-white border-[1.5px] w-64 overflow-hidden shadow-md transform hover:scale-105 hover:translate-x-1 hover:translate-y-1 transition-all duration-200"
+              onClick={() => handleClick(blog._id)}
             >
-              <img src={blog.image} alt="Card Image" className="h-56 object-cover" />
-              <div className="p-4 w-2/3">
-                <h3 className="font-bold text-3xl mb-2">{blog.title}</h3>
-                <p className="text-sm mb-4 max-w-md">{blog.content}</p>
-                <div className="flex space-x-4 text-gray-500 text-xs">
-                  <p>Created by: {blog.name}</p>
-                  <p>Created at: {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString() : "N/A"}</p>
-                  <p>Updated at: {blog.updatedAt ? new Date(blog.updatedAt).toLocaleDateString() : "N/A"}</p>
+              <img
+                src={blog.image}
+                alt="Card Image"
+                className="w-full h-40 object-cover"
+              />
+              <div className="text-sm p-3 ">
+                <h3 className="font-semibold text-lg text-black mb-2">
+                  {blog.title.substring(0, 27)}
+                </h3>
+                <p className="text-black mb-3">
+                  {blog.content.substring(0, 99)}
+                </p>
+  
+                <div className="text-xs text-black space-y-1">
+                  <p>
+                    <span className="font-semibold">Created by:</span>
+                    {blog.name}
+                  </p>
+                  <p>
+                    <span className="font-semibold">Created at:</span>
+                    {blog.createdAt
+                      ? new Date(blog.createdAt).toLocaleDateString()
+                      : "N/A"}
+                  </p>
                 </div>
               </div>
             </div>
           ))
         ) : (
-          <p>No blogs available.</p>
+          <p className="text-white text-center">No blogs available.</p>
         )}
       </div>
     </div>
   );
+  
 };
 
 export default BrowseBlogs;
