@@ -4,6 +4,9 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
+
+
+
 const CreateBlog = () => {
   const [newBlog, setNewBlog] = useState({
     image: "",
@@ -11,13 +14,13 @@ const CreateBlog = () => {
     title: "",
     content: ""
   });
-  const [loading, setLoading] = useState(false);  // Added loading state
+  const [loading, setLoading] = useState(false);  
   const navigate = useNavigate();
   const { createBlog } = userBlog();
     
   const handleBlog = async (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent form submission and page reload
-    setLoading(true);  // Set loading state to true while creating the blog
+    e.preventDefault(); 
+    setLoading(true);  
 
     try {
       const { success, message } = await createBlog(newBlog);
@@ -26,7 +29,7 @@ const CreateBlog = () => {
 
       if (success) {
         toast.success(message); 
-        setNewBlog({ image: "", name: "", title: "", content: "" }); // Clear form
+        setNewBlog({ image: "", name: "", title: "", content: "" }); 
         navigate('/cards');
       } else {
         toast.error(message); 
@@ -35,7 +38,7 @@ const CreateBlog = () => {
       console.error('Error creating blog:', error);
       toast.error("Something went wrong. Please try again.");
     } finally {
-      setLoading(false);  // Set loading state back to false after the process
+      setLoading(false); 
     }
   };
 
@@ -47,7 +50,7 @@ const CreateBlog = () => {
         className="bg-white p-6 rounded-lg shadow-lg max-w-lg mx-auto"
         onSubmit={handleBlog}
       >
-        {/* Blog Image URL Input */}
+      
         <div className="mb-4">
           <label htmlFor="image" className="block text-lg font-medium text-gray-700">Image URL</label>
           <input

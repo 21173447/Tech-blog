@@ -1,8 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
-import Blog from './models/blog.model.js';
-import blog from "./models/blog.model.js";
+
+
 
 import blogRoutes from './routes/blog.route.js'
 import userRoutes from "./routes/userRoutes.js"
@@ -11,7 +11,7 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 dotenv.config();
 const app = express();
-dotenv.config();
+
 
 
 // to be able to use this api you must this..it allows us to accept JSON data in the req.body  we call middleware

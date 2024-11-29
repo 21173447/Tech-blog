@@ -1,12 +1,12 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Nav from './Components/Nav';
+import { Outlet } from 'react-router-dom'; // To render child components based on the route
+import Nav from './Components/Nav'; // Navigation component
 
 const App: React.FC = () => {
   return (
     <div>
-      <Nav /> 
-      <Outlet /> 
+      <Nav />  {/* The navigation bar */}
+      <Outlet />  {/* Where the child routes' components will be rendered */}
     </div>
   );
 };
