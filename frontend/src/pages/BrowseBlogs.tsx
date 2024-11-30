@@ -63,6 +63,10 @@ const BrowseBlogs = () => {
           <p className="text-white text-center">No blogs available.</p>
         )}
       </div>
+
+      <h1 className="text-center text-3xl font-thin text-black flex justify-center mr-[550px] pt-10">
+        Featured Blogs
+      </h1>
       <div className="flex justify-center pt-5">
         <hr className="border-[3px] w-[60%] border-black" />
       </div>
