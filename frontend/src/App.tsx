@@ -8,13 +8,14 @@ import Footer from './Components/Footer';
 const App: React.FC = () => {
   const location = useLocation();
 
-  // Check if the current page is Home, Login, or Register
+  
   const isHomePage = location.pathname === '/';
   const isLoginPage = location.pathname === '/login';
   const isRegisterPage = location.pathname === '/register';
+  const  isCreateBlog = location.pathname === '/create';
 
   
-  const showFeaturedAndSubscribe = !(isHomePage || isLoginPage || isRegisterPage);
+  const showFeaturedAndSubscribe = !(isHomePage || isLoginPage || isRegisterPage || isCreateBlog);
 
   return (
     <div>
