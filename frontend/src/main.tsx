@@ -8,12 +8,11 @@ import RegisterPage from "./pages/RegisterPage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import { Provider } from "react-redux";
 import store from "./store/store.ts";
-import HomePage from "./pages/HomePage.tsx";
 import UpdateProfile from "./pages/UpdateProfile.tsx";
 import CreateBlog from "./pages/CreateBlog.tsx";
 import Cards from "./Components/Cards.tsx";
 import Edit from "./pages/Edit.tsx";
-import BlogsPage from "./pages/blogsPage.tsx";
+import BlogsPage from "./pages/BlogsPage.tsx";
 import BrowseBlogs from "./pages/BrowseBlogs.tsx";
 import BlogDetail from "./pages/BlogDetail.tsx";
 
