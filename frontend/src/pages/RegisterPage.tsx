@@ -62,7 +62,7 @@ const RegisterPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex pt-20">
     
       <div className="w-1/2 bg-gray-100 flex flex-col items-center justify-center p-8">
         <img className="w-3/4 mb-6" src={img1} alt="Register Illustration" />
@@ -72,10 +72,9 @@ const RegisterPage: React.FC = () => {
         </h2>
       </div>
 
-
       <div className="w-1/2 flex flex-col items-center justify-center p-8">
-        <h1 className="text-2xl text-center mb-6 font-extralight text-gray-900">
-        SIGN-UP
+  <h1 className="text-2xl text-center mb-6 font-extralight text-gray-900">
+    SIGN-UP
         </h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -145,7 +144,7 @@ const RegisterPage: React.FC = () => {
           {error && <p className="text-red-500 mb-4">{error}</p>}
           {success && (
             <p className="text-green-500 mb-4">
-              Registration successful! You can now log in.
+              Registration successful! You can now Sign in.
             </p>
           )}
 
@@ -154,7 +153,7 @@ const RegisterPage: React.FC = () => {
             disabled={isLoading}
             className="w-full bg-gray-900 text-white py-2 rounded-md hover:bg-gray-600 transition disabled:bg-gray-400"
           >
-            {isLoading ? "Registering..." : "Register"}
+            {isLoading ? "Signing up..." : "SIGN UP"}
           </button>
         </form>
 
@@ -163,7 +162,7 @@ const RegisterPage: React.FC = () => {
             href="/login"
             className="text-gray-500 hover:text-gray-700 transition"
           >
-            Already have an account? Login
+            Already have an account? Sign in.
           </a>
         </div>
         <ToastContainer />

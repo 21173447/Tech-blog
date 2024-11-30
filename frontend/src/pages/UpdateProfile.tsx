@@ -72,7 +72,7 @@ const UpdateProfile: React.FC = () => {
       </div>
 
   
-      <div className="w-1/2 flex flex-col items-center justify-center p-8">
+      <div className="w-1/2 flex flex-col items-center justify-center p-8 pt-28">
         <div className="w-full max-w-md">
           <h1 className="text-2xl text-center mb-6 font-extralight text-gray-900">
             Update Profile
@@ -152,7 +152,7 @@ const UpdateProfile: React.FC = () => {
           </form>
           <ToastContainer />
           <div className="mt-4 text-center">
-            <Link to="/profile" className="text-blue-500 hover:underline">
+            <Link to="/homepage" className="hover:underline">
               Back to Profile
             </Link>
           </div>
