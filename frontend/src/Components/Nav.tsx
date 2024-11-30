@@ -11,7 +11,6 @@ import { RiTextBlock } from "react-icons/ri";
 import { TbLogout2 } from "react-icons/tb";
 
 const Nav: React.FC = () => {
- 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { userInfo } = useSelector((state: any) => state.auth);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
@@ -19,8 +18,6 @@ const Nav: React.FC = () => {
   const [logoutApiCall] = useLogoutMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -60,85 +57,81 @@ const Nav: React.FC = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-gray-900 p-4 shadow-md z-30">
-    <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
+    <nav className="fixed top-0 left-0 w-full  bg-gray-900 p-4 shadow-md z-30">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
+        <Link to="/" className="flex items-center">
+          <img className="w-12 h-12" src={img2} alt="Logo" />
+        </Link>
 
-      <Link to="/" className="flex items-center">
-        <img className="w-12 h-12" src={img2} alt="Logo" />
-      </Link>
+        <div className="flex items-center ">
+          {userInfo ? (
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={toggleDropdown}
+                className="text-white mr-40 hover:text-gray-500 transition "
+              >
+                {userInfo.name}
+              </button>
 
-      <div className="flex items-center ">
-        {userInfo ? (
-          <div className="relative" ref={dropdownRef}>
-            <button
-              onClick={toggleDropdown}
-              className="text-white mr-40 hover:text-gray-500 transition "
-            >
-              {userInfo.name}
-            </button>
-  
-            {dropdownOpen && (
-              <div className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg  overflow-hidden">
-                <div className="p-2">
-                  <Link
-                    to="/create"
-                    className="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition py-2 px-3"
-                    onClick={closeDropdown}
-                  >
-                    Write <FaPenToSquare className="ml-3" />
-                    
-                  </Link>
-                  <hr className="border-[1px] w-[100%] " />
-                  <Link
-                    to="/profile"
-                    className="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition py-2 px-3"
-                    onClick={closeDropdown}
-                  >
-                    Profile <CgProfile className="ml-3" />
-                  </Link>
-                  <hr className="border-[1px] w-[100%] " />
-                  <Link
-                    to="/Manageblogs"
-                    className="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition py-2 px-3"
-                    onClick={closeDropdown}
-                  >
-                    Blogs <RiTextBlock className="ml-3" />
-                  </Link>
-                  <hr className="border-[1px] w-[100%] " />
-                  <button
-                    className="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition w-full py-2 px-3 text-left"
-                    onClick={() => {
-                      closeDropdown();
-                      logoutHandler();
-                    }}
-                  >
-                    Logout <TbLogout2 className="ml-3" />
-                  </button>
+              {dropdownOpen && (
+                <div className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg  overflow-hidden">
+                  <div className="p-2">
+                    <Link
+                      to="/create"
+                      className="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition py-2 px-3"
+                      onClick={closeDropdown}
+                    >
+                      Write <FaPenToSquare className="ml-3" />
+                    </Link>
+                    <hr className="border-[1px] w-[100%] " />
+                    <Link
+                      to="/profile"
+                      className="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition py-2 px-3"
+                      onClick={closeDropdown}
+                    >
+                      Profile <CgProfile className="ml-3" />
+                    </Link>
+                    <hr className="border-[1px] w-[100%] " />
+                    <Link
+                      to="/Manageblogs"
+                      className="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition py-2 px-3"
+                      onClick={closeDropdown}
+                    >
+                      Blogs <RiTextBlock className="ml-3" />
+                    </Link>
+                    <hr className="border-[1px] w-[100%] " />
+                    <button
+                      className="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition w-full py-2 px-3 text-left"
+                      onClick={() => {
+                        closeDropdown();
+                        logoutHandler();
+                      }}
+                    >
+                      Logout <TbLogout2 className="ml-3" />
+                    </button>
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        ) : (
-          <>
-            <Link
-              to="/login"
-              className="text-white hover:text-gray-600 transition "
-            >
-              SIGN IN
-            </Link>
-            <Link
-              to="/signup"
-              className="text-white  hover:text-gray-600 transition "
-            >
-              SIGN UP
-            </Link>
-          </>
-        )}
-       
+              )}
+            </div>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="text-white hover:text-gray-600 transition mr-3"
+              >
+                SIGN IN
+              </Link>
+              <Link
+                to="/signup"
+                className="text-white hover:text-gray-600 transition"
+              >
+                SIGN UP
+              </Link>
+            </>
+          )}
+        </div>
       </div>
-    </div>
-  </nav>
-  
+    </nav>
   );
 };
 
