@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // To fetch the blog ID from the URL
-import { userBlog } from "../store/blog"; // Assuming you have a store for fetching the blog
+import { useParams } from "react-router-dom"; 
+import { userBlog } from "../store/blog"; 
 
 const BlogDetail = () => {
-  const { bid } = useParams(); // Extract the blog ID from the URL
-  const { blogs } = userBlog(); // Get blogs from the store
-  const [blog, setBlog] = useState<any>(null); // State to store the selected blog
+  const { bid } = useParams(); 
+  const { blogs } = userBlog();
+  const [blog, setBlog] = useState<any>(null); 
 
   useEffect(() => {
     if (bid) {
@@ -19,44 +19,54 @@ const BlogDetail = () => {
   }
 
   return (
-    <div className="pt-28 flex justify-center">
-  <div className="w-[30%] bg-white shadow-md mt-8 rounded-lg overflow-hidden text-justify grid place-items-center space-y-8">
-    <h1 className="text-4xl font-bold mt-9 text-center">{blog.title}</h1>
+<div className="pt-28 flex justify-center py-10">
+  <div className="w-[60%] bg-white mt-8 rounded-lg overflow-hidden text-justify p-8 space-y-8"> {/* Increased width and added padding */}
+    <h1 className="text-4xl font-bold text-center">{blog.title}</h1>
 
     <div>
       <img
         src={blog.image}
         alt="Blog Image"
-        className="h-96 object-cover"
+        className="w-full h-96 object-cover" 
       />
     </div>
 
     <div>
-
-      <div className="space-y-3  "> 
-      {blog.content.split('\n').map((paragraph: string, index: number) => (
+      <div className="space-y-3">
+        {blog.content.split('\n').map((paragraph: string, index: number) => (
           <p key={index} className="text-md mb-4">{paragraph}</p>
         ))}
       </div>
 
-      <div className="flex space-x-4 text-black mt-4 text-xs">
+      <div className="flex flex-col sm:flex-row sm:space-x-4 text-black mt-4 text-xs">
         <p>Created by: {blog.name}</p>
         <p>
           Created at:{" "}
           {blog.createdAt
-            ? new Date(blog.createdAt).toLocaleDateString()
+            ? new Date(blog.createdAt).toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
             : "N/A"}
         </p>
         <p>
           Updated at:{" "}
           {blog.updatedAt
-            ? new Date(blog.updatedAt).toLocaleDateString()
+            ? new Date(blog.updatedAt).toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
             : "N/A"}
         </p>
       </div>
     </div>
   </div>
 </div>
+
 
 
 

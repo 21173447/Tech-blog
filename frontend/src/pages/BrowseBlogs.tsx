@@ -22,52 +22,53 @@ const BrowseBlogs = () => {
         Recent Blog
       </h1>
       <div className="flex justify-center pt-5">
-        <hr className="border-[3px] w-[45%] border-black" />
+        <hr className="border-[3px] w-[60%] border-black" />
       </div>
-  
-      <div className="grid grid-cols-3 pt-10 w-[50%] place-content-center justify-items-center mx-auto  space-y-4">
-        {blogs && blogs.length > 0 ? (
-          blogs.map((blog) => (
-            <div
-              key={blog._id}
-              className="bg-white border-[1.5px] w-64 overflow-hidden shadow-md transform hover:scale-105 hover:translate-x-1 hover:translate-y-1 transition-all duration-200"
-              onClick={() => handleClick(blog._id)}
-            >
-              <img
-                src={blog.image}
-                alt="Card Image"
-                className="w-full h-40 object-cover"
-              />
-              <div className="text-sm p-3 ">
-                <h3 className="font-semibold text-lg text-black mb-2">
-                  {blog.title.substring(0, 27)}
-                </h3>
-                <p className="text-black mb-3">
-                  {blog.content.substring(0, 99)}
-                </p>
-  
-                <div className="text-xs text-black space-y-1">
-                  <p>
-                    <span className="font-semibold">Created by:</span>
-                    {blog.name}
-                  </p>
-                  <p>
-                    <span className="font-semibold">Created at:</span>
-                    {blog.createdAt
-                      ? new Date(blog.createdAt).toLocaleDateString()
-                      : "N/A"}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))
-        ) : (
-          <p className="text-white text-center">No blogs available.</p>
-        )}
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-10 w-[50%] place-content-center justify-items-center mx-auto">
+  {blogs && blogs.length > 0 ? (
+    blogs.map((blog) => (
+      <div
+        key={blog._id}
+        className=" w-full overflow-hidden transform hover:scale-105 hover:translate-x-1 hover:translate-y-1 transition-all duration-200"
+        onClick={() => handleClick(blog._id)}
+      >
+        <img
+          src={blog.image}
+          alt="Card Image"
+          className="w-full h-32 object-cover" 
+        />
+        <div className="text-sm p-2"> 
+          <h3 className="font-semibold text-lg text-black mb-1">
+            {blog.title.substring(0, 27)}
+          </h3>
+          <p className="text-black mb-2 text-xs">
+            {blog.content.substring(0, 80)}....
+          </p>
+          <div className="text-xs text-black space-y-1">
+            <p>
+              <span className="font-semibold"></span> {blog.name}
+            </p>
+            <p>
+              <span className="font-semibold">Posted:</span>{" "}
+              {blog.createdAt
+                ? new Date(blog.createdAt).toLocaleDateString()
+                : "N/A"}
+            </p>
+          </div>
+        </div>
       </div>
+    ))
+  ) : (
+    <p className="text-white text-center">No blogs available.</p>
+  )}
+</div>
+<div className="flex justify-center pt-5">
+        <hr className="border-[3px] w-[60%] border-black" />
+      </div>
+
     </div>
   );
-  
 };
 
 export default BrowseBlogs;
