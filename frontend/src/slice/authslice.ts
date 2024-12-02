@@ -4,6 +4,7 @@ interface UserInfo {
   name: string;
   email: string;
   token: string;
+  role: string; 
 }
 
 interface AuthState {
@@ -21,15 +22,16 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setCredentials: (state, action: PayloadAction<UserInfo>) => {
-      state.userInfo = action.payload;
-      localStorage.setItem('userInfo', JSON.stringify(action.payload));
+      state.userInfo = action.payload; 
+      localStorage.setItem('userInfo', JSON.stringify(action.payload)); 
     },
     logout: (state) => {
       state.userInfo = null;
-      localStorage.removeItem('userInfo');
+      localStorage.removeItem('userInfo'); 
     },
   },
 });
+
 
 export const { setCredentials, logout } = authSlice.actions;
 

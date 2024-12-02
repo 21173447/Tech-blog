@@ -15,6 +15,7 @@ import Edit from "./pages/Edit.tsx";
 import BlogsPage from "./pages/BlogsPage.tsx";
 import BrowseBlogs from "./pages/BrowseBlogs.tsx";
 import BlogDetail from "./pages/BlogDetail.tsx";
+import AdminPage from "./pages/AdminPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
       { path: "/cards", element: <Cards /> },
       { path: "/edit/:bid", element: <Edit /> },
       { path: "/", element: <BrowseBlogs /> },
+      { path: "/admin", element: <AdminPage /> },
       { path: "/blog/:bid", element: <BlogDetail /> },
     ],
   },

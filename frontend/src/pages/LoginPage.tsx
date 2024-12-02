@@ -6,6 +6,7 @@ import { setCredentials } from "../slice/authslice";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import img1 from "../images/file.png";
+
 interface LoginError {
   data?: {
     message?: string;
@@ -26,18 +27,29 @@ const LoginPage: React.FC = () => {
   const { userInfo } = useSelector((state: any) => state.auth);
 
   useEffect(() => {
+   
     if (userInfo) {
-      navigate("/homepage");
+      if (userInfo.role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/homepage"); 
+      }
     }
   }, [navigate, userInfo]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+
     try {
       const res = await login({ email, password }).unwrap();
       dispatch(setCredentials({ ...res }));
-      navigate("/homepage");
+
+      if (res.user.role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/homepage");
+      }
     } catch (err) {
       const error = err as LoginError;
       toast.error(error?.data?.message || error?.error || "An error occurred");
@@ -48,19 +60,15 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex">
-  
       <div className="w-1/2 bg-gray-100 flex flex-col items-center justify-center p-8">
         <img className="w-3/4 mb-6" src={img1} alt="Login Illustration" />
-
- 
         <h1 className="text-2xl p-1 text-gray-900">ByteCraft</h1>
         <h2 className="text-gray-500">Navigating the Digital Age, One Byte at a Time.</h2>
       </div>
 
-
       <div className="w-1/2 flex flex-col items-center justify-center p-8">
         <div className="">
-          <h1 className="text-2xl  text-center mb-6 font-extralight text-gray-900">SIGN-IN</h1>
+          <h1 className="text-2xl text-center mb-6 font-extralight text-gray-900">SIGN-IN</h1>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label htmlFor="email" className="block mb-2 font-medium">
